@@ -9,19 +9,15 @@ export default function App() {
 
   useEffect(() => {
     async function getUsers() {
-      const response = await axios.get(apiURL);
-
-      try {
-        setlistUsers(response.data);
-        // console.log(response.data);
-      } catch (error) {
-        // if (reponse.error) {
-        console.log('Error Occured');
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-        // }
-      }
+      await axios
+        .get(apiURL)
+        .then((response) => {
+          setlistUsers(response.data);
+        })
+        .catch((error) => {
+          console.log('Error Occured');
+          console.log(error);
+        });
     }
     getUsers();
   }, []);
