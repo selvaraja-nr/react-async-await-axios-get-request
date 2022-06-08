@@ -11,7 +11,6 @@ export default function App() {
     async function getUsers() {
       await axios
         .get(apiURL)
-
         .then((response) => {
           setlistUsers(response.data);
         })
